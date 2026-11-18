@@ -221,8 +221,25 @@ def handle_text(message):
     if text == '📁 База файлов' and chat_id in VIP_USERS:
         bot.send_message(chat_id, "📁 <b>База файлов</b>\nВыберите нужный документ:", reply_markup=get_files_menu(), parse_mode="HTML")
         return
-        
-    file_map = {'📄 FAQ': 'FAQ.xlsx', '📄 Презентация NT': 'Nametkin Tower.pdf', '📄 Памятка Госключ': 'Памятка_Госключ.pdf', '📄 Памятка эскроу': 'Памятка_эскроу.pdf', '📄 Шаблон ДДУ': 'Шаблон ДДУ.docx', '📄 Шаблон бронь': 'Шаблон бронь.pdf', '📄 Доверенность Ершов': 'Доверенность Ершов Гартея.pdf', '📄 Доверенность Разин': 'Доверенность Разин 2026.pdf'}
+
+    if text == '📄 FAQ HAM' and chat_id in VIP_USERS:
+        xlsx_files = [f for f in os.listdir('.') if f.lower().endswith('.xlsx')]
+        if xlsx_files:
+            try: bot.send_document(chat_id, open(xlsx_files[0], "rb"))
+            except: bot.send_message(chat_id, f"⚠️ Ошибка отправки файла {xlsx_files[0]}.")
+        else:
+            bot.send_message(chat_id, "⚠️ Excel-файл (.xlsx) не найден в системе.")
+        return
+
+    file_map = {
+        '📄 Презентация NT': 'Nametkin Tower.pdf',
+        '📄 Памятка Госключ': 'Памятка_Госключ.pdf',
+        '📄 Памятка эскроу': 'Памятка_эскроу.pdf',
+        '📄 Шаблон ДДУ': 'Шаблон ДДУ.docx',
+        '📄 Шаблон бронь': 'Шаблон бронь.pdf',
+        '📄 Доверенность Ершов': 'Доверенность Ершов Гартея.pdf',
+        '📄 Доверенность Разин': 'Доверенность Разин 2026.pdf'
+    }
     if text in file_map and chat_id in VIP_USERS:
         filename = file_map[text]
         try: bot.send_document(chat_id, open(filename, "rb"))
