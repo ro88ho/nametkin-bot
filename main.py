@@ -222,7 +222,7 @@ def handle_text(message):
         bot.send_message(chat_id, "📁 <b>База файлов</b>\nВыберите нужный документ:", reply_markup=get_files_menu(), parse_mode="HTML")
         return
         
-    file_map = {'📄 FAQ HAM': 'FAQ HAM.xlsx', '📄 Презентация NT': 'Nametkin Tower.pdf', '📄 Памятка Госключ': 'Памятка_Госключ.pdf', '📄 Памятка эскроу': 'Памятка_эскроу.pdf', '📄 Шаблон ДДУ': 'Шаблон ДДУ.docx', '📄 Шаблон бронь': 'Шаблон бронь.pdf', '📄 Доверенность Ершов': 'Доверенность Ершов Гартея.pdf', '📄 Доверенность Разин': 'Доверенность Разин 2026.pdf'}
+    file_map = {'📄 FAQ HAM': 'FAQ НАМ.xlsx', '📄 Презентация NT': 'Nametkin Tower.pdf', '📄 Памятка Госключ': 'Памятка_Госключ.pdf', '📄 Памятка эскроу': 'Памятка_эскроу.pdf', '📄 Шаблон ДДУ': 'Шаблон ДДУ.docx', '📄 Шаблон бронь': 'Шаблон бронь.pdf', '📄 Доверенность Ершов': 'Доверенность Ершов Гартея.pdf', '📄 Доверенность Разин': 'Доверенность Разин 2026.pdf'}
     if text in file_map and chat_id in VIP_USERS:
         filename = file_map[text]
         try: bot.send_document(chat_id, open(filename, "rb"))
