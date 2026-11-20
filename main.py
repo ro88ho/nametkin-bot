@@ -4,7 +4,7 @@ import telebot
 from telebot import types
 
 TELEGRAM_TOKEN = os.environ.get("BOT_TOKEN")
-VIP_USERS = [7682498558, 287941679, 268036848]
+VIP_USERS = [7682498558, 287941679, 268036848, 307974312, 5163167011, 5191354267, 8491297591, 5620724068] # Роман, Игорь, Мария, Ирина, Дмитрий, Ксения, Эдвард, Мадина
 
 bot = telebot.TeleBot(TELEGRAM_TOKEN)
 
